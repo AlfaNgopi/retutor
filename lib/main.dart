@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'second.dart';
 
 void main() {
   runApp(const MyApp());
@@ -27,7 +28,8 @@ class FirstPage extends StatefulWidget {
 
 class _FirstPageState extends State<FirstPage> {
   String buttonText = 'ddd';
-  int currentBottomIdx = 1;
+  int currentBottomIdx = 0;
+  bool isClicked = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,7 +56,18 @@ class _FirstPageState extends State<FirstPage> {
                           child: Text(buttonText))
                     ],
                   ))
-              : Image.asset('images/elsa.webp'),
+              : Container(
+                  height: double.infinity,
+                  color: isClicked ? Colors.yellow : Colors.red,
+                  child: GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        isClicked = !isClicked;
+                      });
+                    },
+                    child: Image.asset('images/elsa.webp'),
+                  ),
+                ),
         ),
         bottomNavigationBar: BottomNavigationBar(
           items: const [
@@ -71,15 +84,3 @@ class _FirstPageState extends State<FirstPage> {
   }
 }
 
-class SecondPage extends StatelessWidget {
-  SecondPage({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("SecondPage"),
-      ),
-    );
-  }
-}

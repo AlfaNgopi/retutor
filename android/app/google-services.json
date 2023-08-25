@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "359364839752",
+    "project_id": "fluttertest-d8311",
+    "storage_bucket": "fluttertest-d8311.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:359364839752:android:3810adfeaa4ea798c90b7d",
+        "android_client_info": {
+          "package_name": "com.gopagame.retutor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "359364839752-3ccpcnbefu9nsqdlteja9sguibmpamra.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBCh3eJKfwY20fG2F63szRB1z4CEOq9c5U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "359364839752-3ccpcnbefu9nsqdlteja9sguibmpamra.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
