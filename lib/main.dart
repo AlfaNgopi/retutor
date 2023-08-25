@@ -1,7 +1,8 @@
+
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatefulWidget {
@@ -21,36 +22,37 @@ class _MyAppState extends State<MyApp> {
       home: Scaffold(
           appBar: AppBar(title: const Text('anjay')),
           body: Center(
-              child: SizedBox(
-                  width: double.infinity,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      ElevatedButton(
-                          onPressed: () {
-                            print('clicked');
+            child: currentBottomIdx == 0
+                ? Container(
+                    height: double.infinity,
+                    color: Colors.green,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        ElevatedButton(
+                            onPressed: () {
 
-                            setState(() {
-                              buttonText = 'Pressed';
-                            });
-                          },
-                          child: Text(buttonText)),
-                      ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.yellow,
 
-                        ),
-                          onPressed: () {
-                            print('clicked');
-
-                            setState(() {
-                              buttonText = 'Pressed';
-                            });
-                          },
-                          child: Text(buttonText))
-                    ],
-                  ))),
+                              setState(() {
+                                buttonText = 'Pressed';
+                              });
+                            },
+                            child: Text(buttonText)),
+                        ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.yellow,
+                            ),
+                            onPressed: () {
+                              setState(() {
+                                buttonText = 'Pressed';
+                              });
+                            },
+                            child: Text(buttonText))
+                      ],
+                    ))
+                : Image.network('https://images-ng.pixai.art/images/thumb/9f61361f-162b-4b7e-9258-cd5751cc2085'),
+          ),
           bottomNavigationBar: BottomNavigationBar(
             items: const [
               BottomNavigationBarItem(label: 'wow', icon: Icon(Icons.home)),
