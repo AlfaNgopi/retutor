@@ -3,16 +3,20 @@
 import 'package:flutter/material.dart';
 
 class Hro{
-  late String name, profildir;
-  late Image profil;
+  static int idCounter = 0;
+  late int id;
+  late String name, profileDir;
+  late Image profile;
 
   //stat
 
 
 
 
-  Hro (this.name, this.profildir){
-    profil = Image.asset(profildir);
+  Hro (this.name, this.profileDir){
+    idCounter++;
+    id = idCounter;
+    profile = Image.asset(profileDir);
   }
 
 

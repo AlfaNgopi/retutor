@@ -17,6 +17,7 @@ class Asset {
 
   void loadHeroes() async {
     List<List<dynamic>> _data = [];
+
     final rawData = await rootBundle.loadString("asset/heroes.csv");
     var listData = const CsvToListConverter().convert(rawData);
 
@@ -27,6 +28,7 @@ class Asset {
         print("Loaded ${heroes.last.name}");
       }
     }
+
   }
 
   void loadLanes()async {
