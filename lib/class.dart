@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
 
-class Lane{
+class Class{
   late Image icon;
   late String name,icondir,desc;
 
-  Lane(this.name, this.icondir, this.desc){
-   icon = Image.asset(icondir,scale: 1.5,);
+  Class(this.name, this.icondir, this.desc){
+    icon = Image.asset(icondir,scale: 1.8,);
   }
 
 
