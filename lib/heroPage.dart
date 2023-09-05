@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'asset.dart';
 import 'hro.dart';
 
 class HeroPage extends StatelessWidget {
@@ -26,7 +27,6 @@ class HeroPage extends StatelessWidget {
                     child: hro.profile,
                   ),
                   Container(
-                    color: Colors.white70,
                     padding: EdgeInsets.symmetric(vertical: 10),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -45,12 +45,34 @@ class HeroPage extends StatelessWidget {
                                 hro.clas.icon,
                                 Text(hro.clas.name),
                               ],
-                            )
+                            ),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            Asset.iconBp,
+                            Text(hro.bp.toString()),
+                            Asset.iconDiamond,
+                            Text(hro.diamond.toString()),
+                            Asset.iconTicket,
+                            Text(hro.ticket.toString())
                           ],
                         )
                       ],
                     ),
                   )
+                ],
+              ),
+            ),
+            Container(
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      Text("hp = "),
+                      Text(hro.hp.toString()),
+                    ],
+                  ),
                 ],
               ),
             )

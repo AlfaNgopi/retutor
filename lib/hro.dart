@@ -11,10 +11,45 @@ class Hro {
   late Image profile;
   late Lane lane;
   late Class clas;
+  late int bp, diamond, ticket;
+
+  late String speciality;
 
   //stat
+  late double hp,
+      mana,
+      hpRegen,
+      manaRegen,
+      phyAtk,
+      mgcAtk,
+      phyDef,
+      mgcDef,
+      atkSpeed,
+      movSpeed,
+      atkSpeedRatio;
 
-  Hro(this.name, this.profileDir, String laning, String classing) {
+  //ini constructor
+  Hro(
+      this.name,
+      this.profileDir,
+      this.bp,
+      this.diamond,
+      this.ticket,
+      String classing,
+      String laning,
+      this.speciality,
+      dynamic hp,
+      dynamic mana,
+      dynamic hpRegen,
+      dynamic manaRegen,
+      dynamic phyAtk,
+      dynamic mgcAtk,
+      dynamic phyDef,
+      dynamic mgcDef,
+      dynamic atkSpeed,
+      dynamic movSpeed,
+      dynamic atkSpeedRatio) {
+
     idCounter++;
     id = idCounter;
     profile = Image.asset(profileDir);
@@ -33,7 +68,7 @@ class Hro {
       case "mid":
         lane = Asset.lanes[2];
         break;
-      case "jungle":
+      case "jugle":
         lane = Asset.lanes[3];
         break;
       case "roam":
@@ -58,5 +93,23 @@ class Hro {
       case "support":
         clas = Asset.classes[5];
     }
+
+    //merubah stat dari dinamic ga jelas ke double
+    this.hp = checkDouble(hp);
+    this.mana = checkDouble(mana);
+    this.hpRegen = checkDouble(hpRegen);
+    this.manaRegen = checkDouble(manaRegen);
+    this.phyAtk = checkDouble(phyAtk);
+    this.mgcAtk = checkDouble(mgcAtk);
+    this.phyDef = checkDouble(phyDef);
+    this.mgcDef = checkDouble(mgcDef);
+    this.atkSpeed = checkDouble(atkSpeed);
+    this.movSpeed = checkDouble(movSpeed);
+    this.atkSpeedRatio = checkDouble(atkSpeedRatio);
+  }
+  double checkDouble(dynamic value) {
+    if(value is double) return value;
+    if(value is int) return value.toDouble();
+    return 0;
   }
 }

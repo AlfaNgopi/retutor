@@ -116,7 +116,7 @@
 115,Xavier,asset/xavier.png,32000,599,0,mage,mid,Damage/Guard,2616,670,6.8,5.2,111,0,15,15,1,250,100
 116,Julian,asset/julian.png,32000,599,0,fighter,jugle,Chase/Magic Damage,2878,420,7.8,3.2,128,0,24,15,0.99,262,100
 117,Fredrinn,asset/fredrinn.png,32000,599,0,tank,jugle,Damage/Chase,2709,0,6.4,0,125,0,20,15,1.06,260,100
-118,Joy,asset/joy.png,32000,599,0,assasin,exp,Chase/Damage,2678,0,7.8,0,119,0,20,15,1.12,260,100
-119,Arlott,asset/arlott.png,32000,599,0,fighter,exp,2628,2628,510,8,3.4,120,0,21,15,1.09,260,100
+118,Joy,asset/joy.png,32000,599,0,assasin,exp,,2678,0,7.8,0,119,0,20,15,1.12,260,100
+119,Arlott,asset/arlott.png,32000,599,0,fighter,exp,Chase/Damage,2628,510,8,3.4,120,0,21,15,1.09,260,100
 120,Novaria,asset/novaria.png,32000,599,0,mage,mid,Burst/Poke,2401,540,6.8,4.6,115,0,12,15,1.01,240,100
 121,Ixia,asset/ixia.png,32000,599,0,mm,gold,Finisher/Damage,2620,440,8,3,100,0,17,15,1.04,240,100
