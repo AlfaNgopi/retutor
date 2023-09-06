@@ -113,7 +113,7 @@ class _FirstPageState extends State<FirstPage> {
     return Scaffold(
       appBar: AppBar(title: const Text('anjay'), actions: [
         FloatingActionButton(
-          child: Icon(Icons.refresh),
+          child: const Icon(Icons.refresh),
           onPressed: () {
             setState(() {
               cards = getHeroesCard();
