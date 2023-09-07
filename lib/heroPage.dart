@@ -5,6 +5,8 @@ import 'hro.dart';
 
 class HeroPage extends StatelessWidget {
   final Hro hro;
+  final Color cardsColor = Colors.blue;
+  final Color backgroundColor = const Color.fromRGBO(0, 119, 182, 100);
 
   const HeroPage(this.hro, {super.key});
 
@@ -12,52 +14,53 @@ class HeroPage extends StatelessWidget {
   Widget build(BuildContext context) {
     //this variable
     final double width = MediaQuery.of(context).size.width;
+    const double sideCardsMargin = 10;
+    final double cardsWidth = width - sideCardsMargin * 2;
 
     return Scaffold(
+      //backgroundColor: backgroundColor,
       appBar: AppBar(
         title: Text(hro.name),
       ),
       body: Center(
         child: Column(
+          // childrens of cards
           children: [
+            //hero profile
             Container(
-              color: Colors.grey,
-              width: double.infinity,
-
+              color: cardsColor,
+              width: cardsWidth,
+              margin: const EdgeInsets.symmetric(vertical: 10),
               child: Column(
                 children: [
+                  Text(hro.name, textScaleFactor: 3),
                   Container(
-
-                    padding: EdgeInsets.only(top: 30),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Container(
-                          color: Colors.yellow,
-                          width: width / 2,
-                          padding: EdgeInsets.symmetric(horizontal: 5),
+                          // color: Colors.yellow,
+                          width: cardsWidth / 2,
+                          padding: const EdgeInsets.symmetric(horizontal: 5),
                           child: Image.asset(hro.profileDir, scale: 0.6),
                         ),
 
                         //class lane name
                         Container(
-                          color: Colors.blue,
-                          width: width / 2,
+                          // color: Colors.blue,
+                          width: cardsWidth / 2,
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Text(hro.name, textScaleFactor: 2),
-                              ),
                               Column(
                                 //mainAxisAlignment: MainAxisAlignment.start,
 
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Padding(
-                                    padding :const EdgeInsets.symmetric(vertical: 8.0),
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 8.0),
                                     child: Row(
                                       children: [
                                         hro.lane.icon,
@@ -66,7 +69,8 @@ class HeroPage extends StatelessWidget {
                                     ),
                                   ),
                                   Padding(
-                                    padding :const EdgeInsets.symmetric(vertical: 8.0),
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 8.0),
                                     child: Row(
                                       children: [
                                         hro.clas.icon,
@@ -75,10 +79,10 @@ class HeroPage extends StatelessWidget {
                                     ),
                                   ),
                                   Padding(
-                                    padding :const EdgeInsets.symmetric(vertical: 8.0),
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 8.0),
                                     child: Row(
                                       children: [
-
                                         Text(hro.speciality),
                                       ],
                                     ),
@@ -92,13 +96,12 @@ class HeroPage extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    color: Colors.white12,
-
+                    //color: Colors.white12,
                     child: Row(
                       children: [
                         Container(
-                          color: Colors.white,
-                          width: width / 3,
+                          //color: Colors.white,
+                          width: cardsWidth / 3,
                           child: Row(
                             children: [
                               Asset.iconBp,
@@ -107,8 +110,8 @@ class HeroPage extends StatelessWidget {
                           ),
                         ),
                         Container(
-                          color: Colors.red,
-                          width: width / 3,
+                          //color: Colors.red,
+                          width: cardsWidth / 3,
                           child: Row(
                             children: [
                               Asset.iconDiamond,
@@ -117,7 +120,7 @@ class HeroPage extends StatelessWidget {
                           ),
                         ),
                         SizedBox(
-                          width: width / 3,
+                          width: cardsWidth / 3,
                           child: Row(
                             children: [
                               Asset.iconTicket,
@@ -134,16 +137,17 @@ class HeroPage extends StatelessWidget {
 
             // stats
             Container(
-              color: Colors.green,
+              width: cardsWidth,
+              color: cardsColor,
               child: Column(
                 children: [
-                  Text("Stats", textScaleFactor: 2),
+                  const Text("Stats", textScaleFactor: 2),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Container(
                         color: Colors.blue,
-                        width : width/2,
+                        width: cardsWidth / 2,
                         child: const Column(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
@@ -162,7 +166,7 @@ class HeroPage extends StatelessWidget {
                         ),
                       ),
                       SizedBox(
-                        width: width/2,
+                        width: cardsWidth / 2,
                         child: Column(
                           children: [
                             Text(hro.hp.toString()),

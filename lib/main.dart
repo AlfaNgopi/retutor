@@ -50,6 +50,9 @@ class _FirstPageState extends State<FirstPage> {
   bool isLoaded = false;
   int heroSelected = 0;
 
+  final Color cardsColor = Colors.blue;
+  final Color backgroundColor = const Color.fromRGBO(0, 119, 182, 100);
+
   late Widget cards;
 
   _FirstPageState() {
@@ -71,7 +74,7 @@ class _FirstPageState extends State<FirstPage> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Container(
-                color: Colors.grey,
+                color: cardsColor,
                 width: double.infinity,
                 margin:
                     const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
@@ -111,9 +114,9 @@ class _FirstPageState extends State<FirstPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('anjay'), actions: [
-        FloatingActionButton(
-          child: const Icon(Icons.refresh),
+      appBar: AppBar(title: const Text('anjay'), actions: <Widget>[
+        IconButton(
+          icon: const Icon(Icons.refresh),
           onPressed: () {
             setState(() {
               cards = getHeroesCard();
@@ -124,7 +127,7 @@ class _FirstPageState extends State<FirstPage> {
       body: Center(
           child: Container(
         width: double.infinity,
-        color: Colors.black87,
+        color: backgroundColor,
         child: cards,
       )),
     );

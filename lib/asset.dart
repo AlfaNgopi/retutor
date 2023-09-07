@@ -20,13 +20,13 @@ class Asset {
   }
 
   void loadHeroes() async {
-    List<List<dynamic>> _data = [];
+    List<List<dynamic>> data = [];
 
     final rawData = await rootBundle.loadString("asset/heroes.csv");
     var listData = const CsvToListConverter().convert(rawData);
 
-    _data = listData;
-    for (List<dynamic> p in _data) {
+    data = listData;
+    for (List<dynamic> p in data) {
       if (p[0] != 'no') {
         heroes.add(Hro(
             p[1],
@@ -54,12 +54,12 @@ class Asset {
   }
 
   void loadLanes() async {
-    List<List<dynamic>> _data = [];
+    List<List<dynamic>> data = [];
     final rawData = await rootBundle.loadString("asset/lanes.csv");
     var listData = const CsvToListConverter().convert(rawData);
 
-    _data = listData;
-    for (List<dynamic> p in _data) {
+    data = listData;
+    for (List<dynamic> p in data) {
       if (p[0] != 'name') {
         lanes.add(Lane(p[0], p[1], p[2]));
         print("Loaded ${lanes.last.name}");
@@ -68,12 +68,12 @@ class Asset {
   }
 
   void loadClasses() async {
-    List<List<dynamic>> _data = [];
+    List<List<dynamic>> data = [];
     final rawData = await rootBundle.loadString("asset/classes.csv");
     var listData = const CsvToListConverter().convert(rawData);
 
-    _data = listData;
-    for (List<dynamic> p in _data) {
+    data = listData;
+    for (List<dynamic> p in data) {
       if (p[0] != 'name') {
         classes.add(Class(p[0], p[1], p[2]));
         print("Loaded ${classes.last.name}");
