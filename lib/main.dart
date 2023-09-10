@@ -84,7 +84,7 @@ class _FirstPageState extends State<FirstPage> {
                     width: 225,
                     child: Row(
                       children: [
-                        Image.asset(heroes[index].profileDir, scale: 1.2),
+                        Image.asset(heroes[index].profileDir),
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Text(heroes[index].name),
@@ -114,7 +114,7 @@ class _FirstPageState extends State<FirstPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('anjay'), actions: <Widget>[
+      appBar: AppBar(title: const Text('Home'), actions: <Widget>[
         IconButton(
           icon: const Icon(Icons.refresh),
           onPressed: () {
@@ -130,6 +130,43 @@ class _FirstPageState extends State<FirstPage> {
         color: backgroundColor,
         child: cards,
       )),
+      drawer: Drawer(
+        // Add a ListView to the drawer. This ensures the user can scroll
+        // through the options in the drawer if there isn't enough vertical
+        // space to fit everything.
+
+        child: ListView(
+          // Important: Remove any padding from the ListView.
+          padding: EdgeInsets.zero,
+          children: [
+            const DrawerHeader(
+              decoration: BoxDecoration(
+                color: Colors.blue,
+              ),
+              child: Text('Drawer Header'),
+            ),
+            ListTile(
+              title: const Row(
+                children: [
+                  Icon(Icons.home),
+                  Text('Home'),
+                ],
+              ),
+              onTap: () {
+                // Update the state of the app.
+                // ...
+              },
+            ),
+            ListTile(
+              title: const Text('Item 2'),
+              onTap: () {
+                // Update the state of the app.
+                // ...
+              },
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
