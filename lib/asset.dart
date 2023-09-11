@@ -1,6 +1,7 @@
 import 'package:csv/csv.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
+import 'package:retutor/item.dart';
 import 'class.dart';
 import 'hro.dart';
 import 'lane.dart';
@@ -9,11 +10,13 @@ class Asset {
   static List<Hro> heroes = [];
   static List<Lane> lanes = [];
   static List<Class> classes = [];
+  static List<Item> items = [];
   static Image iconBp = Image.asset("asset/bp.png");
   static Image iconDiamond = Image.asset("asset/diamond.png");
   static Image iconTicket = Image.asset("asset/ticket.png");
 
   Asset() {
+    loadItems();
     loadClasses();
     loadLanes();
     loadHeroes();
@@ -47,7 +50,8 @@ class Asset {
             p[16],
             p[17],
             p[18],
-            p[19]));
+            p[19],
+            p[21]));
         print("Loaded ${heroes.last.name}");
       }
     }
@@ -77,6 +81,20 @@ class Asset {
       if (p[0] != 'name') {
         classes.add(Class(p[0], p[1], p[2]));
         print("Loaded ${classes.last.name}");
+      }
+    }
+  }
+
+  void loadItems() async {
+    List<List<dynamic>> data = [];
+    final rawData = await rootBundle.loadString("asset/items.csv");
+    var listData = const CsvToListConverter().convert(rawData);
+
+    data = listData;
+    for (List<dynamic> p in data) {
+      if (p[0] != 'name') {
+        items.add(Item(p[0], p[1], p[2]));
+        print("Loaded ${items.last.name}");
       }
     }
   }

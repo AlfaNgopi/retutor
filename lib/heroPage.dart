@@ -3,16 +3,11 @@ import 'package:flutter/material.dart';
 import 'asset.dart';
 import 'hro.dart';
 
-class HeroPage extends StatefulWidget {
+class HeroPage extends StatelessWidget {
   final Hro hro;
 
   const HeroPage(this.hro, {super.key});
 
-  @override
-  State<HeroPage> createState() => _HeroPageState();
-}
-
-class _HeroPageState extends State<HeroPage> {
   final Color cardsColor = Colors.blue;
 
   final Color backgroundColor = const Color.fromRGBO(0, 119, 182, 100);
@@ -29,7 +24,7 @@ class _HeroPageState extends State<HeroPage> {
     return Scaffold(
       backgroundColor: backgroundColor,
       appBar: AppBar(
-        title: Text(widget.hro.name),
+        title: Text(hro.name),
       ),
       body: ListView(children: [
         //hro profile
@@ -38,7 +33,7 @@ class _HeroPageState extends State<HeroPage> {
           margin: cardsMargin,
           child: Column(
             children: [
-              Text(widget.hro.name, textScaleFactor: 3),
+              Text(hro.name, textScaleFactor: 3),
               Container(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -48,7 +43,7 @@ class _HeroPageState extends State<HeroPage> {
                       // color: Colors.yellow,
                       width: cardsWidth / 2,
                       padding: const EdgeInsets.symmetric(horizontal: 5),
-                      child: Image.asset(widget.hro.profileDir, scale: 0.6),
+                      child: Image.asset(hro.profileDir, scale: 0.6),
                     ),
 
                     //class lane name
@@ -68,8 +63,8 @@ class _HeroPageState extends State<HeroPage> {
                                     const EdgeInsets.symmetric(vertical: 8.0),
                                 child: Row(
                                   children: [
-                                    widget.hro.lane.icon,
-                                    Text(widget.hro.lane.name)
+                                    hro.lane.icon,
+                                    Text(hro.lane.name)
                                   ],
                                 ),
                               ),
@@ -78,8 +73,8 @@ class _HeroPageState extends State<HeroPage> {
                                     const EdgeInsets.symmetric(vertical: 8.0),
                                 child: Row(
                                   children: [
-                                    widget.hro.clas.icon,
-                                    Text(widget.hro.clas.name),
+                                    hro.clas.icon,
+                                    Text(hro.clas.name),
                                   ],
                                 ),
                               ),
@@ -88,7 +83,7 @@ class _HeroPageState extends State<HeroPage> {
                                     const EdgeInsets.symmetric(vertical: 8.0),
                                 child: Row(
                                   children: [
-                                    Text(widget.hro.speciality),
+                                    Text(hro.speciality),
                                   ],
                                 ),
                               ),
@@ -110,7 +105,7 @@ class _HeroPageState extends State<HeroPage> {
                       child: Row(
                         children: [
                           Asset.iconBp,
-                          Text(widget.hro.bp.toString()),
+                          Text(hro.bp.toString()),
                         ],
                       ),
                     ),
@@ -120,7 +115,7 @@ class _HeroPageState extends State<HeroPage> {
                       child: Row(
                         children: [
                           Asset.iconDiamond,
-                          Text(widget.hro.diamond.toString()),
+                          Text(hro.diamond.toString()),
                         ],
                       ),
                     ),
@@ -129,7 +124,7 @@ class _HeroPageState extends State<HeroPage> {
                       child: Row(
                         children: [
                           Asset.iconTicket,
-                          Text(widget.hro.ticket.toString()),
+                          Text(hro.ticket.toString()),
                         ],
                       ),
                     )
@@ -174,17 +169,17 @@ class _HeroPageState extends State<HeroPage> {
                     width: cardsWidth / 2,
                     child: Column(
                       children: [
-                        Text(widget.hro.hp.toString()),
-                        Text(widget.hro.mana.toString()),
-                        Text(widget.hro.hpRegen.toString()),
-                        Text(widget.hro.manaRegen.toString()),
-                        Text(widget.hro.phyAtk.toString()),
-                        Text(widget.hro.mgcAtk.toString()),
-                        Text(widget.hro.phyDef.toString()),
-                        Text(widget.hro.mgcDef.toString()),
-                        Text(widget.hro.atkSpeed.toString()),
-                        Text(widget.hro.movSpeed.toString()),
-                        Text(widget.hro.atkSpeedRatio.toString()),
+                        Text(hro.hp.toString()),
+                        Text(hro.mana.toString()),
+                        Text(hro.hpRegen.toString()),
+                        Text(hro.manaRegen.toString()),
+                        Text(hro.phyAtk.toString()),
+                        Text(hro.mgcAtk.toString()),
+                        Text(hro.phyDef.toString()),
+                        Text(hro.mgcDef.toString()),
+                        Text(hro.atkSpeed.toString()),
+                        Text(hro.movSpeed.toString()),
+                        Text(hro.atkSpeedRatio.toString()),
                       ],
                     ),
                   ),
@@ -205,34 +200,31 @@ class _HeroPageState extends State<HeroPage> {
                 child: Row(
                   children: [
                     Container(
-                      color: widget.hro.lane.name == "EXP"
-                          ? Colors.yellow
-                          : cardsColor,
+                      color:
+                          hro.lane.name == "EXP" ? Colors.yellow : cardsColor,
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Asset.lanes[0].icon,
                       ),
                     ),
                     Container(
-                      color: widget.hro.lane.name == "GOLD"
-                          ? Colors.yellow
-                          : cardsColor,
+                      color:
+                          hro.lane.name == "GOLD" ? Colors.yellow : cardsColor,
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Asset.lanes[1].icon,
                       ),
                     ),
                     Container(
-                      color: widget.hro.lane.name == "MID"
-                          ? Colors.yellow
-                          : cardsColor,
+                      color:
+                          hro.lane.name == "MID" ? Colors.yellow : cardsColor,
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Asset.lanes[2].icon,
                       ),
                     ),
                     Container(
-                      color: widget.hro.lane.name == "JUNGLE"
+                      color: hro.lane.name == "JUNGLE"
                           ? Colors.yellow
                           : cardsColor,
                       child: Padding(
@@ -241,9 +233,8 @@ class _HeroPageState extends State<HeroPage> {
                       ),
                     ),
                     Container(
-                      color: widget.hro.lane.name == "ROAM"
-                          ? Colors.yellow
-                          : cardsColor,
+                      color:
+                          hro.lane.name == "ROAM" ? Colors.yellow : cardsColor,
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Asset.lanes[4].icon,
@@ -254,7 +245,7 @@ class _HeroPageState extends State<HeroPage> {
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Text(widget.hro.lane.desc),
+                child: Text(hro.lane.desc),
               ),
             ],
           ),
@@ -271,7 +262,7 @@ class _HeroPageState extends State<HeroPage> {
                 child: Row(
                   children: [
                     Container(
-                      color: widget.hro.clas.name == "FIGHTER"
+                      color: hro.clas.name == "FIGHTER"
                           ? Colors.yellow
                           : cardsColor,
                       child: Padding(
@@ -280,7 +271,7 @@ class _HeroPageState extends State<HeroPage> {
                       ),
                     ),
                     Container(
-                      color: widget.hro.clas.name == "MARKSMAN"
+                      color: hro.clas.name == "MARKSMAN"
                           ? Colors.yellow
                           : cardsColor,
                       child: Padding(
@@ -289,16 +280,15 @@ class _HeroPageState extends State<HeroPage> {
                       ),
                     ),
                     Container(
-                      color: widget.hro.clas.name == "MAGE"
-                          ? Colors.yellow
-                          : cardsColor,
+                      color:
+                          hro.clas.name == "MAGE" ? Colors.yellow : cardsColor,
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Asset.classes[2].icon,
                       ),
                     ),
                     Container(
-                      color: widget.hro.clas.name == "ASSASIN"
+                      color: hro.clas.name == "ASSASIN"
                           ? Colors.yellow
                           : cardsColor,
                       child: Padding(
@@ -307,16 +297,15 @@ class _HeroPageState extends State<HeroPage> {
                       ),
                     ),
                     Container(
-                      color: widget.hro.clas.name == "TANK"
-                          ? Colors.yellow
-                          : cardsColor,
+                      color:
+                          hro.clas.name == "TANK" ? Colors.yellow : cardsColor,
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Asset.classes[4].icon,
                       ),
                     ),
                     Container(
-                      color: widget.hro.clas.name == "SUPPORT"
+                      color: hro.clas.name == "SUPPORT"
                           ? Colors.yellow
                           : cardsColor,
                       child: Padding(
@@ -329,7 +318,33 @@ class _HeroPageState extends State<HeroPage> {
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Text(widget.hro.clas.desc),
+                child: Text(hro.clas.desc),
+              ),
+            ],
+          ),
+        ),
+        Container(
+          margin: cardsMargin,
+          color: cardsColor,
+          child: Column(
+            children: [
+              const Text("Rekomendasi Build", textScaleFactor: 1.5),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Padding(
+                      padding: EdgeInsets.all(4.0), child: hro.build[0].icon),
+                  Padding(
+                      padding: EdgeInsets.all(4.0), child: hro.build[1].icon),
+                  Padding(
+                      padding: EdgeInsets.all(4.0), child: hro.build[2].icon),
+                  Padding(
+                      padding: EdgeInsets.all(4.0), child: hro.build[3].icon),
+                  Padding(
+                      padding: EdgeInsets.all(4.0), child: hro.build[4].icon),
+                  Padding(
+                      padding: EdgeInsets.all(4.0), child: hro.build[5].icon),
+                ],
               ),
             ],
           ),

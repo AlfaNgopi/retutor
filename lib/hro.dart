@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:retutor/asset.dart';
+import 'package:retutor/item.dart';
 
 import 'class.dart';
 import 'lane.dart';
@@ -14,6 +15,11 @@ class Hro {
   late int bp, diamond, ticket;
 
   late String speciality;
+
+  //bulids
+  List<Item> build = [];
+
+  late String strBuild;
 
   //stat
   late double hp,
@@ -48,8 +54,8 @@ class Hro {
       dynamic mgcDef,
       dynamic atkSpeed,
       dynamic movSpeed,
-      dynamic atkSpeedRatio) {
-
+      dynamic atkSpeedRatio,
+      String strBuildd) {
     idCounter++;
     id = idCounter;
     profile = Image.asset(profileDir);
@@ -106,10 +112,21 @@ class Hro {
     this.atkSpeed = checkDouble(atkSpeed);
     this.movSpeed = checkDouble(movSpeed);
     this.atkSpeedRatio = checkDouble(atkSpeedRatio);
+
+    List<String> result = strBuildd.split(',');
+    int i = 0;
+    for (String sss in result) {
+      i += 1;
+      if (i > 6) {
+        break;
+      }
+      print(sss);
+      build.add(Asset.items.firstWhere((item) => item.name == sss));
+    }
   }
   double checkDouble(dynamic value) {
-    if(value is double) return value;
-    if(value is int) return value.toDouble();
+    if (value is double) return value;
+    if (value is int) return value.toDouble();
     return 0;
   }
 }
