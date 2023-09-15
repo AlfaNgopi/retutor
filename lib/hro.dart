@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:retutor/asset.dart';
+import 'package:retutor/emblem.dart';
 import 'package:retutor/item.dart';
 
 import 'class.dart';
@@ -18,10 +19,14 @@ class Hro {
 
   //bulids
   List<Item> build = [];
+  List<Emblem> emblem = [];
 
-  //strongAgainst
+  //Against
   late String strStrongAgainst;
   List<Hro> strongAgainst = [];
+
+  late String strWeakAgainst;
+  List<Hro> weakAgainst = [];
 
   //stat
   late double hp,
@@ -58,7 +63,9 @@ class Hro {
       dynamic movSpeed,
       dynamic atkSpeedRatio,
       String strBuildd,
-      this.strStrongAgainst) {
+      this.strStrongAgainst,
+      this.strWeakAgainst,
+      String strEmblem) {
     idCounter++;
     id = idCounter;
     profile = Image.asset(profileDir);
@@ -117,6 +124,23 @@ class Hro {
     this.atkSpeedRatio = checkDouble(atkSpeedRatio);
 
     build = setBuild(strBuildd);
+    emblem = setEmbelm(strEmblem);
+  }
+
+  List<Emblem> setEmbelm(strEmblem) {
+    List<String> result = strEmblem.split(',');
+    int i = 0;
+    List<Emblem> build = [];
+
+    for (String sss in result) {
+      i += 1;
+      if (i > 4) {
+        break;
+      }
+
+      build.add(Asset.emblems.firstWhere((emblem) => emblem.name == sss));
+    }
+    return build;
   }
 
   List<Item> setBuild(String strBuild) {
@@ -140,9 +164,9 @@ class Hro {
     return 0;
   }
 
-  List<Hro> setHeroesList(String strStrongAgainst) {
+  List<Hro> setHeroesList(String strHeroesList) {
     List<Hro> hroList = [];
-    List<String> result = strStrongAgainst.split(',');
+    List<String> result = strHeroesList.split(',');
 
     for (String name in result) {
       if (name == "") {

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:retutor/emblem.dart';
 
 import 'asset.dart';
 import 'hro.dart';
@@ -11,6 +12,49 @@ class HeroPage extends StatelessWidget {
 
   HeroPage(this.hro, {super.key}) {
     hro.strongAgainst = hro.setHeroesList(hro.strStrongAgainst);
+    hro.weakAgainst = hro.setHeroesList(hro.strWeakAgainst);
+  }
+
+  Widget EmblemShow(double cardWidth, List<Emblem> emblemsSet) {
+    return Container(
+      color: backgroundColor,
+      padding: EdgeInsets.all(8.0),
+      child: Row(
+        children: [
+          CircleAvatar(
+            backgroundImage: AssetImage(emblemsSet[0].icondir),
+            radius: 40,
+          ),
+          Container(
+            width: cardWidth - 120,
+            decoration: BoxDecoration(
+              color: Color.fromARGB(156, 0, 66, 102),
+              border: Border.all(color: Colors.black),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  CircleAvatar(
+                    backgroundImage: AssetImage(emblemsSet[1].icondir),
+                    radius: 30,
+                  ),
+                  CircleAvatar(
+                    backgroundImage: AssetImage(emblemsSet[2].icondir),
+                    radius: 30,
+                  ),
+                  CircleAvatar(
+                    backgroundImage: AssetImage(emblemsSet[3].icondir),
+                    radius: 30,
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 
   @override
@@ -256,6 +300,7 @@ class HeroPage extends StatelessWidget {
         Container(
           color: cardsColor,
           margin: cardsMargin,
+          padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
               Padding(
@@ -388,6 +433,53 @@ class HeroPage extends StatelessWidget {
             ],
           ),
         ),
+
+        //weak against
+        Container(
+          margin: cardsMargin,
+          color: cardsColor,
+          child: Column(
+            children: [
+              const Text("Weak Against", textScaleFactor: 1.5),
+              SizedBox(
+                width: cardsWidth,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    CircleAvatar(
+                      backgroundImage:
+                          AssetImage(hro.weakAgainst[0].profileDir),
+                    ),
+                    CircleAvatar(
+                      backgroundImage:
+                          AssetImage(hro.weakAgainst[1].profileDir),
+                    ),
+                    CircleAvatar(
+                      backgroundImage:
+                          AssetImage(hro.weakAgainst[2].profileDir),
+                    ),
+                    CircleAvatar(
+                      backgroundImage:
+                          AssetImage(hro.weakAgainst[3].profileDir),
+                    ),
+                    CircleAvatar(
+                      backgroundImage:
+                          AssetImage(hro.weakAgainst[4].profileDir),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+
+        //Emblem
+        Container(
+          margin: cardsMargin,
+          color: cardsColor,
+          padding: const EdgeInsets.all(8.0),
+          child: EmblemShow(cardsWidth, hro.emblem),
+        )
       ]),
     );
   }
