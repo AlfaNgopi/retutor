@@ -19,7 +19,9 @@ class Hro {
   //bulids
   List<Item> build = [];
 
-  late String strBuild;
+  //strongAgainst
+  late String strStrongAgainst;
+  List<Hro> strongAgainst = [];
 
   //stat
   late double hp,
@@ -55,7 +57,8 @@ class Hro {
       dynamic atkSpeed,
       dynamic movSpeed,
       dynamic atkSpeedRatio,
-      String strBuildd) {
+      String strBuildd,
+      this.strStrongAgainst) {
     idCounter++;
     id = idCounter;
     profile = Image.asset(profileDir);
@@ -113,20 +116,43 @@ class Hro {
     this.movSpeed = checkDouble(movSpeed);
     this.atkSpeedRatio = checkDouble(atkSpeedRatio);
 
-    List<String> result = strBuildd.split(',');
+    build = setBuild(strBuildd);
+  }
+
+  List<Item> setBuild(String strBuild) {
+    List<String> result = strBuild.split(',');
     int i = 0;
+    List<Item> build = [];
     for (String sss in result) {
       i += 1;
       if (i > 6) {
         break;
       }
-      print(sss);
+
       build.add(Asset.items.firstWhere((item) => item.name == sss));
     }
+    return build;
   }
+
   double checkDouble(dynamic value) {
     if (value is double) return value;
     if (value is int) return value.toDouble();
     return 0;
+  }
+
+  List<Hro> setHeroesList(String strStrongAgainst) {
+    List<Hro> hroList = [];
+    List<String> result = strStrongAgainst.split(',');
+
+    for (String name in result) {
+      if (name == "") {
+        break;
+      }
+      //print(name);
+
+      hroList.add(Asset.heroes.firstWhere((hro) => hro.name == name));
+    }
+
+    return hroList;
   }
 }

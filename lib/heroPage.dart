@@ -5,12 +5,13 @@ import 'hro.dart';
 
 class HeroPage extends StatelessWidget {
   final Hro hro;
-
-  const HeroPage(this.hro, {super.key});
-
   final Color cardsColor = Colors.blue;
 
   final Color backgroundColor = const Color.fromRGBO(0, 119, 182, 100);
+
+  HeroPage(this.hro, {super.key}) {
+    hro.strongAgainst = hro.setHeroesList(hro.strStrongAgainst);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -323,28 +324,66 @@ class HeroPage extends StatelessWidget {
             ],
           ),
         ),
+
+        //Rekomendasi Build
         Container(
           margin: cardsMargin,
           color: cardsColor,
           child: Column(
             children: [
               const Text("Rekomendasi Build", textScaleFactor: 1.5),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Padding(
-                      padding: EdgeInsets.all(4.0), child: hro.build[0].icon),
-                  Padding(
-                      padding: EdgeInsets.all(4.0), child: hro.build[1].icon),
-                  Padding(
-                      padding: EdgeInsets.all(4.0), child: hro.build[2].icon),
-                  Padding(
-                      padding: EdgeInsets.all(4.0), child: hro.build[3].icon),
-                  Padding(
-                      padding: EdgeInsets.all(4.0), child: hro.build[4].icon),
-                  Padding(
-                      padding: EdgeInsets.all(4.0), child: hro.build[5].icon),
-                ],
+              SizedBox(
+                width: cardsWidth,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    hro.build[0].icon,
+                    hro.build[1].icon,
+                    hro.build[2].icon,
+                    hro.build[3].icon,
+                    hro.build[4].icon,
+                    hro.build[5].icon,
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+
+        //Strong against
+        Container(
+          margin: cardsMargin,
+          color: cardsColor,
+          child: Column(
+            children: [
+              const Text("Strong Against", textScaleFactor: 1.5),
+              SizedBox(
+                width: cardsWidth,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    CircleAvatar(
+                      backgroundImage:
+                          AssetImage(hro.strongAgainst[0].profileDir),
+                    ),
+                    CircleAvatar(
+                      backgroundImage:
+                          AssetImage(hro.strongAgainst[1].profileDir),
+                    ),
+                    CircleAvatar(
+                      backgroundImage:
+                          AssetImage(hro.strongAgainst[2].profileDir),
+                    ),
+                    CircleAvatar(
+                      backgroundImage:
+                          AssetImage(hro.strongAgainst[3].profileDir),
+                    ),
+                    CircleAvatar(
+                      backgroundImage:
+                          AssetImage(hro.strongAgainst[4].profileDir),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),

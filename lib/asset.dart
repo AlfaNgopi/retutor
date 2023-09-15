@@ -15,11 +15,14 @@ class Asset {
   static Image iconDiamond = Image.asset("asset/diamond.png");
   static Image iconTicket = Image.asset("asset/ticket.png");
 
+  static bool isLoaded = false;
+
   Asset() {
     loadItems();
     loadClasses();
     loadLanes();
     loadHeroes();
+    isLoaded = true;
   }
 
   void loadHeroes() async {
@@ -51,7 +54,8 @@ class Asset {
             p[17],
             p[18],
             p[19],
-            p[21]));
+            p[21],
+            p[26]));
         print("Loaded ${heroes.last.name}");
       }
     }
